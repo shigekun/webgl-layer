@@ -27,9 +27,9 @@
               center: center,
               mapTypeId: google.maps.MapTypeId.ROADMAP,
               disableDefaultUI: true,
-              draggable: false,
-              scrollwheel: false,
-              panControl: false
+              draggable: true,
+              scrollwheel: true,
+              panControl: true
             };
             var mapCanvas = document.getElementById('header-map');
             map = new google.maps.Map(mapCanvas, mapOptions);
