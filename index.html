@@ -41,7 +41,8 @@
             });
 
             myLayer.tilebase = 'http://www2.chuogeomatics.jp/tilegeojson/vector-postgis-hinanjo/';
-            myLayer.zoomlock = 10;
+            myLayer.zoomlock = 12;
+            myLayer.setDefaultPointColor = [1.0, 0.0, 0.0];
 
             //myLayer.loadGeoJson('postcodes.geojson');
 
@@ -89,7 +90,7 @@
         </div>
         <div id="info">
           <div id="header-map"></div>
-          <div id="map-caption">UK Postcode data in Central London. Around 80,000 points.</div>
+          <div id="map-caption">Hinanjo data in Japan. by GeoJSON Tile</div>
           <div class="container">
             <h3>WebGL Layer is an experimental extension of Google Maps to provide support for WebGL integration and data manipulation.</h3>
             <ul id="feature-list">
