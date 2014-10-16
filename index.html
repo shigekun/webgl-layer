@@ -19,7 +19,7 @@
         <script>
           var map;
           var myLayer;
-          var center = new google.maps.LatLng(51.507413, -0.127802);
+          var center = new google.maps.LatLng(35.793275, 139.682816);
            
           function initialize() { 
             var mapOptions = {
@@ -40,10 +40,10 @@
                 map.setCenter(center);
             });
 
-            // myLayer.tilebase = 'http://130.211.58.85:8080/postcodes/';
-            // myLayer.zoomlock = 12;
+            myLayer.tilebase = 'http://www2.chuogeomatics.jp/tilegeojson/vector-postgis-hinanjo/';
+            myLayer.zoomlock = 10;
 
-            myLayer.loadGeoJson('postcodes.geojson');
+            //myLayer.loadGeoJson('postcodes.geojson');
 
             // google.maps.event.addListenerOnce(map, 'idle', function(){
             //   generateData(100000);
