@@ -289,6 +289,7 @@ WebGLLayer.vertexCallback_ = function(data, polyVertArray) {
   polyVertArray[polyVertArray.length] = data[0];
   polyVertArray[polyVertArray.length] = data[1];
   polyVertArray[polyVertArray.length] = WebGLLayer.packColor([1.0, 0.0, 0.0]);
+  polyVertArray[polyVertArray.length] = 1;
 };
 
 /**
@@ -379,7 +380,7 @@ WebGLLayer.prototype.changePointColor = function(idx, color){
  */
 WebGLLayer.prototype.changePolyColor = function(idxStart, idxEnd, color){
   for(var i = idxStart; i <= idxEnd; i++){
-    this.features_.polygons.floats[i*3 + 2] = WebGLLayer.packColor(color);
+    this.features_.polygons.floats[i*4 + 2] = WebGLLayer.packColor(color);
   }
   this.features_.polygons.changed = true;
   this.scheduleUpdate();
