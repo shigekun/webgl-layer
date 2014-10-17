@@ -94,7 +94,7 @@ function WebGLLayer (map){
       'borderbuffer': this.gl_.createBuffer(),
       'borderCount': 0,
       'borderCounts': [],
-      'fill_transparency': 0.8,
+      'fill_transparency': .3,
       'changed': false
     }
   }
@@ -289,7 +289,7 @@ WebGLLayer.vertexCallback_ = function(data, polyVertArray) {
   polyVertArray[polyVertArray.length] = data[0];
   polyVertArray[polyVertArray.length] = data[1];
   polyVertArray[polyVertArray.length] = data[2];//WebGLLayer.packColor([1.0, 0.0, 0.0]);
-  polyVertArray[polyVertArray.length] = 0;
+  polyVertArray[polyVertArray.length] = data[3];
 };
 
 /**
@@ -488,16 +488,15 @@ WebGLLayer.prototype.processPolygon = function(coordinates){
 
       borderPoints.push(xy[0]);
       borderPoints.push(xy[1]);
-      borderPoints.push(WebGLLayer.packColor([0., 0., 0.]));
-      borderPoints.push(5.0);
+      borderPoints.push(WebGLLayer.packColor([0., 0., 1.]));
+      borderPoints.push(1.0);
 
-      var adj = [xy[0], xy[1], WebGLLayer.packColor([0., Math.abs(Math.cos(coordinates.length)), 0.]), 0];
+      var adj = [xy[0], xy[1], WebGLLayer.packColor([0., Math.abs(Math.cos(contour.length)), 0.]), 1.];
       tesselator.gluTessVertex(adj, adj);
     })
 
     tesselator.gluTessEndContour();
   });
-
   tesselator.gluTessEndPolygon();
 
   this.features_.polygons.borderFloats = this.features_.polygons.borderFloats.concat(borderPoints);

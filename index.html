@@ -18,7 +18,7 @@
 
         <script>
           var map;
-          var myLayer;
+          var myLayer1, myLayer2;
           var center = new google.maps.LatLng(35.793275, 139.682816);
            
           function initialize() { 
@@ -34,16 +34,19 @@
             var mapCanvas = document.getElementById('header-map');
             map = new google.maps.Map(mapCanvas, mapOptions);
               
-            myLayer = new WebGLLayer(map);
+            myLayer2 = new WebGLLayer(map);
+            myLayer1 = new WebGLLayer(map);
 
             google.maps.event.addDomListener(window, 'resize', function() {
                 map.setCenter(center);
             });
 
-            myLayer.tilebase = 'http://www2.chuogeomatics.jp/tilegeojson/vector-postgis-hinanjo/';
-            myLayer.tilebase = 'http://www2.chuogeomatics.jp/tilegeojson/administrative_area/';
-            myLayer.zoomlock = 12;
-            myLayer.setDefaultPointColor = [1.0, 0.0, 0.0];
+            myLayer1.tilebase = 'http://www2.chuogeomatics.jp/tilegeojson/vector-postgis-hinanjo/';
+            myLayer1.zoomlock = 12;
+            myLayer1.setDefaultPointColor = [1.0, 0.0, 0.0];
+
+            myLayer2.tilebase = 'http://www2.chuogeomatics.jp/tilegeojson/administrative_area/';
+            myLayer2.zoomlock = 12;
 
             //myLayer.loadGeoJson('postcodes.geojson');
 
@@ -51,7 +54,8 @@
             //   generateData(100000);
             // });
 
-            myLayer.start(); //Starts the rendering loop.
+            myLayer1.start(); //Starts the rendering loop.
+            myLayer2.start(); //Starts the rendering loop.
           }
 
           function generateData(n) {
@@ -72,7 +76,7 @@
               res.features.push(point);
             }
             console.log(res);
-            myLayer.loadData(res);
+            myLayer1.loadData(res);
           }
 
           google.maps.event.addDomListener(window, 'load', initialize);
