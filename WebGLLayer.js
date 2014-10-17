@@ -488,10 +488,10 @@ WebGLLayer.prototype.processPolygon = function(coordinates){
 
       borderPoints.push(xy[0]);
       borderPoints.push(xy[1]);
-      borderPoints.push(WebGLLayer.packColor([0., 0.5, 0.]));
+      borderPoints.push(WebGLLayer.packColor([0., 0., 0.]));
       borderPoints.push(5.0);
 
-      var adj = [xy[0], xy[1], 0, 0];
+      var adj = [xy[0], xy[1], WebGLLayer.packColor([0., Math.abs(Math.sin(coordinates.length)), 0.]), 0];
       tesselator.gluTessVertex(adj, adj);
     })
 
