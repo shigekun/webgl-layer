@@ -173,7 +173,6 @@ WebGLLayer.DEFAULT_POINT_VERT_SHADER_ = [
 
     'attribute vec4 worldCoord;',
     'attribute float aColor;',
-    'attribute float aSize;',
 
     'uniform mat4 mapMatrix;',
 
@@ -181,7 +180,7 @@ WebGLLayer.DEFAULT_POINT_VERT_SHADER_ = [
 
     'void main() {',
     '  gl_Position = mapMatrix * worldCoord;',
-    '  gl_PointSize = aSize;',
+    '  gl_PointSize = 2.;',
     '  vColor = aColor;',
     '}'
 ].join('\n');
@@ -602,7 +601,6 @@ WebGLLayer.prototype.update = function() {
   }
   gl.vertexAttribPointer(pointProgram.attributes.worldCoord, 2, gl.FLOAT, false, 12, 0);
   gl.vertexAttribPointer(pointProgram.attributes.aColor, 1, gl.FLOAT, false, 12, 8);
-  gl.vertexAttribPointer(pointProgram.attributes.aSize, 2, gl.FLOAT, false, 12, 8);
 
   gl.drawArrays(gl.TRIANGLES, 0, this.features_.polygons.count);
 
@@ -616,7 +614,6 @@ WebGLLayer.prototype.update = function() {
   }
   gl.vertexAttribPointer(pointProgram.attributes.worldCoord, 2, gl.FLOAT, false, 12, 0);
   gl.vertexAttribPointer(pointProgram.attributes.aColor, 1, gl.FLOAT, false, 12, 8);
-  gl.vertexAttribPointer(pointProgram.attributes.aSize, 2, gl.FLOAT, false, 12, 8);
 
   var seen = 0;
   for(var i = 0; i < this.features_.polygons.borderCounts.length; i++){
@@ -632,7 +629,6 @@ WebGLLayer.prototype.update = function() {
   }
   gl.vertexAttribPointer(pointProgram.attributes.worldCoord, 2, gl.FLOAT, false, 12, 0);
   gl.vertexAttribPointer(pointProgram.attributes.aColor, 1, gl.FLOAT, false, 12, 8);
-  gl.vertexAttribPointer(pointProgram.attributes.aSize, 5, gl.FLOAT, false, 12, 8);
   
   gl.drawArrays(gl.POINTS, 0, this.features_.points.count);
 };
