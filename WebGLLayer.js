@@ -288,8 +288,8 @@ WebGLLayer.translateMatrix_ = function(matrix, tx, ty) {
 WebGLLayer.vertexCallback_ = function(data, polyVertArray) {
   polyVertArray[polyVertArray.length] = data[0];
   polyVertArray[polyVertArray.length] = data[1];
-  polyVertArray[polyVertArray.length] = WebGLLayer.packColor([1.0, 0.0, 0.0]);
-  polyVertArray[polyVertArray.length] = 1;
+  polyVertArray[polyVertArray.length] = data[2];//WebGLLayer.packColor([1.0, 0.0, 0.0]);
+  polyVertArray[polyVertArray.length] = 0;
 };
 
 /**
@@ -488,7 +488,7 @@ WebGLLayer.prototype.processPolygon = function(coordinates){
 
       borderPoints.push(xy[0]);
       borderPoints.push(xy[1]);
-      borderPoints.push(WebGLLayer.packColor([0., 0., 0.]));
+      borderPoints.push(WebGLLayer.packColor([0., 0.5, 0.]));
       borderPoints.push(5.0);
 
       var adj = [xy[0], xy[1], 0, 0];
