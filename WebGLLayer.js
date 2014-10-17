@@ -488,9 +488,9 @@ WebGLLayer.prototype.processPolygon = function(coordinates){
       borderPoints.push(xy[0]);
       borderPoints.push(xy[1]);
       borderPoints.push(WebGLLayer.packColor([0., 0., 0.]));
-      borderPoints.push(2.0);
+      borderPoints.push(5.0);
 
-      var adj = [xy[0], xy[1], 0];
+      var adj = [xy[0], xy[1], 0, 0];
       tesselator.gluTessVertex(adj, adj);
     })
 
@@ -500,10 +500,10 @@ WebGLLayer.prototype.processPolygon = function(coordinates){
   tesselator.gluTessEndPolygon();
 
   this.features_.polygons.borderFloats = this.features_.polygons.borderFloats.concat(borderPoints);
-  this.features_.polygons.borderCount += (borderPoints.length/3);
+  this.features_.polygons.borderCount += (borderPoints.length/4);
 
   this.features_.polygons.floats = this.features_.polygons.floats.concat(polyVerts);
-  this.features_.polygons.count += polyVerts.length/3;
+  this.features_.polygons.count += polyVerts.length/4;
 }
 
 
